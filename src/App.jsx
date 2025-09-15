@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard";
 import CadastroAlunos from "./CadastroAlunos/cadastroAlunos";
 import CadastroEmpresas from "./CadastroEmpresas/cadastroEmpresas";
 import AvaliacaoExperiencia from "./AvaliacaoDesempenho/avaliacao";
-import CadastroFuncionario from "./CadastroFuncionario/cadastroFuncionarios";
+import CadastroFuncionario from "./CadastroFuncionario/cadastroFuncionarios"
 
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
