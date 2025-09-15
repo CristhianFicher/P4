@@ -1,0 +1,120 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+  overflow: visible;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: left;
+  background-color: transparent;
+}
+
+.avaliacao-body {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.avaliacao-container {
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  max-width: 800px;
+  width: 100%;
+}
+
+.avaliacao-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.avaliacao-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.avaliacao-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.avaliacao-input,
+.avaliacao-label select,
+.avaliacao-label textarea {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color: #333;
+}
+
+.avaliacao-input:focus,
+.avaliacao-label select:focus,
+.avaliacao-label textarea:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 4px rgba(25, 118, 210, 0.4);
+}
+
+.avaliacao-button {
+  margin-top: 2rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.avaliacao-button:hover {
+  background-color: #1259a7;
+}
+
+.avaliacao-back {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background-color: #eee;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.avaliacao-back:hover {
+  background-color: #ddd;
+}

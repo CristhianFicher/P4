@@ -1,0 +1,192 @@
+/* ==============================
+   Theme Toggle Styles - Tema Azul
+================================*/
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover {
+  background: rgba(30, 64, 175, 0.05);
+}
+
+.theme-toggle.dark:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.toggle-track {
+  width: 55px;
+  height: 28px;
+  background: #e2e8f0;
+  border-radius: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.theme-toggle.dark .toggle-track {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-color: rgba(30, 64, 175, 0.2);
+}
+
+.toggle-thumb {
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle.dark .toggle-thumb {
+  left: calc(100% - 26px);
+  background: #1e293b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle svg {
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle.dark svg {
+  color: var(--primary-light);
+}
+
+/* ==============================
+   Tema Escuro Global
+================================*/
+.dark-theme {
+  --background: #0f172a;
+  --card-bg: #1e293b;
+  --surface: #334155;
+  --text: #f1f5f9;
+  --text-light: #cbd5e1;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: #60a5fa;
+  --secondary: #0ea5e9;
+  --secondary-hover: #0284c7;
+  --accent: #06b6d4;
+  --danger: #ef4444;
+}
+
+.dark-theme .header {
+  background: #1e293b;
+  border-bottom-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-theme .header-nav {
+  background: #1e293b;
+}
+
+.dark-theme .mobile-nav {
+  background: #1e293b;
+  border-top-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-theme .mobile-user-section {
+  border-top-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-theme .login-container {
+  background: #1e293b;
+  border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+.dark-theme .input-wrapper input {
+  background: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark-theme .input-wrapper input:focus {
+  background: #334155;
+}
+
+.dark-theme .login-footer {
+  border-top-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark-theme .stat-card {
+  background: #1e293b;
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.dark-theme .dashboard-section {
+  background: #1e293b;
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.dark-theme .dashboard-section h2 {
+  border-bottom-color: #334155;
+}
+
+.dark-theme .activity-item {
+  background: #334155;
+}
+
+.dark-theme .activity-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.dark-theme .resource-card {
+  background: #334155;
+}
+
+.dark-theme .cadastro-container {
+  background: #1e293b;
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.dark-theme .form-group input {
+  background: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark-theme .form-group input:focus {
+  background: #334155;
+}
+
+.dark-theme .form-section h3 {
+  border-bottom-color: #334155;
+}
+
+.dark-theme .checkmark {
+  border-color: #475569;
+}
+
+/* ==============================
+   Responsividade
+================================*/
+@media (max-width: 480px) {
+  .toggle-track {
+    width: 50px;
+    height: 26px;
+  }
+  
+  .toggle-thumb {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .theme-toggle.dark .toggle-thumb {
+    left: calc(100% - 24px);
+  }
+}
