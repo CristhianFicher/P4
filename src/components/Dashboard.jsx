@@ -133,7 +133,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h1>🎯 ESUCRI - Portal de Inclusão</h1>
+        <h1>Instituto de Educação Especial Diomício Freitas</h1>
         <p>Conectando pessoas autistas com oportunidades de educação e trabalho</p>
       </div>
 

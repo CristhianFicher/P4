@@ -44,9 +44,9 @@ function App() {
             <Route path="/cadastroAlunos" element={<CadastroAlunos />} />
             <Route path="/cadastroEmpresas" element={<CadastroEmpresas />} />
             <Route path="/avaliacao" element={<AvaliacaoExperiencia />} />
-            <Route path="/cadastroFuncionarios" element={<CadastroFuncionarios />} />
-          </Routes>
-        </main>
+            
+          </Routes> 
+        </main>*/
 
         {isLoginOpen && (
           <Login 

@@ -44,8 +44,7 @@ const Login = ({ onLogin, onClose }) => {
     <div className="login-overlay">
       <div className="login-container">
         <div className="login-header">
-          <div className="login-icon">🎯</div>
-          <h2>Bem-vindo ao ESUCRI!</h2>
+          <h2>Bem-vindo!</h2>
           <p>Portal de Inclusão para Pessoas Autistas</p>
           <button className="login-close" onClick={onClose}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -58,10 +57,6 @@ const Login = ({ onLogin, onClose }) => {
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <div className="input-wrapper">
-              <svg className="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2"/>
-                <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2"/>
-              </svg>
               <input
                 type="email"
                 id="email"
@@ -77,11 +72,6 @@ const Login = ({ onLogin, onClose }) => {
           <div className="form-group">
             <label htmlFor="password">Senha</label>
             <div className="input-wrapper">
-              <svg className="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-                <circle cx="12" cy="16" r="1" fill="currentColor"/>
-                <path d="M7 11V7A5 5 0 0 1 17 7V11" stroke="currentColor" strokeWidth="2"/>
-              </svg>
               <input
                 type="password"
                 id="password"

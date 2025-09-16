@@ -28,10 +28,10 @@ const Header = ({ user, onLogout, onLogin }) => {
         {/* Logo */}
         <div className="header-logo">
           <Link to="/" className="logo-link">
-            <div className="logo-icon">🎯</div>
+            <div className="logo-icon"></div>
             <div className="logo-text">
-              <span className="logo-title">ESUCRI</span>
-              <span className="logo-subtitle">Portal de Inclusão</span>
+              <span className="logo-title">Diomício Freitas</span>
+              
             </div>
           </Link>
         </div>
