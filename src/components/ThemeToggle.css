@@ -71,12 +71,19 @@
    Tema Escuro Global
 ================================*/
 .dark-theme {
+  /* Cores de fundo - Modo Escuro */
   --background: #0f172a;
   --card-bg: #1e293b;
   --surface: #334155;
+  
+  /* Cores de texto - Modo Escuro */
   --text: #f1f5f9;
   --text-light: #cbd5e1;
   --text-muted: #94a3b8;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  
+  /* Cores principais mantidas */
   --primary: #3b82f6;
   --primary-hover: #2563eb;
   --primary-light: #60a5fa;
@@ -84,19 +91,26 @@
   --secondary-hover: #0284c7;
   --accent: #06b6d4;
   --danger: #ef4444;
+  
+  /* Sombras ajustadas para modo escuro */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
 }
 
+/* Regras específicas do tema escuro usando variáveis CSS */
 .dark-theme .header {
-  background: #1e293b;
+  background: var(--card-bg);
   border-bottom-color: rgba(59, 130, 246, 0.2);
 }
 
 .dark-theme .header-nav {
-  background: #1e293b;
+  background: var(--card-bg);
 }
 
 .dark-theme .mobile-nav {
-  background: #1e293b;
+  background: var(--card-bg);
   border-top-color: rgba(59, 130, 246, 0.2);
 }
 
@@ -105,18 +119,18 @@
 }
 
 .dark-theme .login-container {
-  background: #1e293b;
+  background: var(--card-bg);
   border: 2px solid rgba(59, 130, 246, 0.2);
 }
 
 .dark-theme .input-wrapper input {
-  background: #334155;
+  background: var(--surface);
   border-color: #475569;
-  color: #f1f5f9;
+  color: var(--text);
 }
 
 .dark-theme .input-wrapper input:focus {
-  background: #334155;
+  background: var(--surface);
 }
 
 .dark-theme .login-footer {
@@ -124,21 +138,21 @@
 }
 
 .dark-theme .stat-card {
-  background: #1e293b;
+  background: var(--card-bg);
   border: 2px solid rgba(59, 130, 246, 0.1);
 }
 
 .dark-theme .dashboard-section {
-  background: #1e293b;
+  background: var(--card-bg);
   border: 2px solid rgba(59, 130, 246, 0.1);
 }
 
 .dark-theme .dashboard-section h2 {
-  border-bottom-color: #334155;
+  border-bottom-color: var(--surface);
 }
 
 .dark-theme .activity-item {
-  background: #334155;
+  background: var(--surface);
 }
 
 .dark-theme .activity-item:hover {
@@ -146,26 +160,30 @@
 }
 
 .dark-theme .resource-card {
-  background: #334155;
+  background: var(--surface);
 }
 
 .dark-theme .cadastro-container {
-  background: #1e293b;
+  background: var(--card-bg);
   border: 2px solid rgba(59, 130, 246, 0.1);
 }
 
-.dark-theme .form-group input {
-  background: #334155;
+.dark-theme .form-group input,
+.dark-theme .form-group select,
+.dark-theme .form-group textarea {
+  background: var(--surface);
   border-color: #475569;
-  color: #f1f5f9;
+  color: var(--text);
 }
 
-.dark-theme .form-group input:focus {
-  background: #334155;
+.dark-theme .form-group input:focus,
+.dark-theme .form-group select:focus,
+.dark-theme .form-group textarea:focus {
+  background: var(--surface);
 }
 
 .dark-theme .form-section h3 {
-  border-bottom-color: #334155;
+  border-bottom-color: var(--surface);
 }
 
 .dark-theme .checkmark {
