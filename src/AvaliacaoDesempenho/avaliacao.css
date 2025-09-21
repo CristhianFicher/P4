@@ -118,3 +118,37 @@ html, body {
 .avaliacao-back:hover {
   background-color: #ddd;
 }
+
+.avaliacao-info {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #1976d2;
+}
+
+.avaliacao-info p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.avaliacao-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.avaliacao-actions .avaliacao-button {
+  margin-top: 0;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.avaliacao-input:disabled,
+.avaliacao-label select:disabled,
+.avaliacao-label textarea:disabled {
+  background-color: #f5f5f5;
+  color: #666;
+  cursor: not-allowed;
+}

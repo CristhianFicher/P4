@@ -1,13 +1,34 @@
 import './avaliacao.css';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState, useLayoutEffect } from 'react';
+import { useEstudantes } from '../context/EstudantesContext';
+import { useAvaliacoes } from '../context/AvaliacoesContext';
 
 export default function AvaliacaoExperiencia() {
-  const [tipoAvaliacao, setTipoAvaliacao] = useState("1");
+  const [searchParams] = useSearchParams();
+  const { obterEstudantePorId } = useEstudantes();
+  const { adicionarAvaliacao, obterAvaliacaoPorEstudanteETipo } = useAvaliacoes();
+  
+  const estudanteId = searchParams.get('estudante');
+  const tipoFromUrl = searchParams.get('tipo');
+  const estudante = estudanteId ? obterEstudantePorId(parseInt(estudanteId)) : null;
+  
+  // Usar o tipo da URL ou padrão 1
+  const [tipoAvaliacao, setTipoAvaliacao] = useState(tipoFromUrl || "1");
+  
+  // Verificar se já existe uma avaliação para este estudante e tipo
+  const avaliacaoExistente = estudanteId && tipoAvaliacao ? 
+    obterAvaliacaoPorEstudanteETipo(parseInt(estudanteId), parseInt(tipoAvaliacao)) : null;
 
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
+
+  const [formData, setFormData] = useState(avaliacaoExistente?.respostas || {});
+  const [observacoes, setObservacoes] = useState(avaliacaoExistente?.observacoes || '');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [isReadOnly, setIsReadOnly] = useState(!!avaliacaoExistente);
 
   const perguntas = [
     "Atende as regras?",
@@ -58,22 +79,70 @@ export default function AvaliacaoExperiencia() {
     "Traz os documentos enviados pela Instituição assinado?",
   ];
 
+  const handleInputChange = (perguntaIndex, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [`pergunta_${perguntaIndex}`]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Simulação de validação e processamento
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Adicionar avaliação ao contexto
+      adicionarAvaliacao({
+        estudanteId: parseInt(estudanteId),
+        tipoAvaliacao: parseInt(tipoAvaliacao),
+        dataAvaliacao: new Date().toISOString().split('T')[0],
+        respostas: formData,
+        observacoes: observacoes
+      });
+      
+      setSubmitStatus('success');
+      
+      // Redirecionar para a lista de avaliações após 2 segundos
+      setTimeout(() => {
+        window.location.href = '/avaliacoes';
+      }, 2000);
+      
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="avaliacao-body">
-      <Link to="/" className="avaliacao-back">← Voltar</Link>
+      <Link to="/avaliacoes" className="avaliacao-back">← Voltar às Avaliações</Link>
 
       <div className="avaliacao-container">
         <h2 className="avaliacao-title">
-          Avaliação {tipoAvaliacao}ª Experiência
+          {isReadOnly ? 'Visualizar' : 'Avaliação'} {tipoAvaliacao}ª Experiência
+          {estudante && ` - ${estudante.nome}`}
         </h2>
+        
+        {isReadOnly && (
+          <div className="avaliacao-info">
+            <p><strong>Data da Avaliação:</strong> {avaliacaoExistente?.dataAvaliacao}</p>
+            <p><strong>Status:</strong> Concluída</p>
+          </div>
+        )}
 
-        <form className="avaliacao-form">
+        <form className="avaliacao-form" onSubmit={handleSubmit}>
           <label className="avaliacao-label">
             Tipo de Avaliação:
             <select
               className="avaliacao-input"
               value={tipoAvaliacao}
               onChange={(e) => setTipoAvaliacao(e.target.value)}
+              disabled={tipoFromUrl || isReadOnly} // Desabilitar se veio da URL ou se é visualização
             >
               <option value="1">Avaliação 1</option>
               <option value="2">Avaliação 2</option>
@@ -83,7 +152,14 @@ export default function AvaliacaoExperiencia() {
           {perguntas.map((pergunta, index) => (
             <div key={index} className="avaliacao-label">
               {index + 1} - {pergunta}
-              <select className="avaliacao-input" name={`pergunta_${index}`}>
+              <select 
+                className="avaliacao-input" 
+                name={`pergunta_${index}`}
+                value={formData[`pergunta_${index}`] || ''}
+                onChange={(e) => handleInputChange(index, e.target.value)}
+                required={!isReadOnly}
+                disabled={isReadOnly}
+              >
                 <option value="">Selecione</option>
                 <option value="sim">Sim</option>
                 <option value="maioria">Maioria das vezes</option>
@@ -95,10 +171,46 @@ export default function AvaliacaoExperiencia() {
 
           <label className="avaliacao-label">
             Observações:
-            <textarea className="avaliacao-input" rows="4" />
+            <textarea 
+              className="avaliacao-input" 
+              rows="4" 
+              value={observacoes}
+              onChange={(e) => setObservacoes(e.target.value)}
+              disabled={isReadOnly}
+            />
           </label>
 
-          <button type="submit" className="avaliacao-button">Salvar Avaliação</button>
+          {submitStatus && (
+            <div className={`submit-status ${submitStatus}`}>
+              {submitStatus === 'success' ? (
+                <>
+                  Avaliação salva com sucesso! 🎉
+                </>
+              ) : (
+                <>
+                  Erro ao salvar avaliação. Tente novamente.
+                </>
+              )}
+            </div>
+          )}
+
+          {!isReadOnly && (
+            <button 
+              type="submit" 
+              className={`avaliacao-button ${isSubmitting ? 'loading' : ''}`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Salvando...' : 'Salvar Avaliação'}
+            </button>
+          )}
+          
+          {isReadOnly && (
+            <div className="avaliacao-actions">
+              <Link to="/avaliacoes" className="avaliacao-button">
+                Voltar às Avaliações
+              </Link>
+            </div>
+          )}
         </form>
       </div>
     </div>

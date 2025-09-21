@@ -46,28 +46,28 @@ const Dashboard = () => {
       title: 'Cadastrar Estudante',
       description: 'Registrar novo estudante autista no sistema',
       icon: '🎓',
-      link: '/cadastroAlunos',
+      link: '/novo-estudante',
       color: 'blue'
     },
     {
       title: 'Cadastrar Empresa',
       description: 'Registrar empresa inclusiva parceira',
       icon: '🏢',
-      link: '/cadastroEmpresas',
+      link: '/nova-empresa',
       color: 'green'
     },
     {
       title: 'Cadastrar Funcionário',
       description: 'Registrar funcionário de apoio',
       icon: '👨‍💼',
-      link: '/cadastroFuncionarios',
+      link: '/novo-funcionario',
       color: 'purple'
     },
     {
       title: 'Avaliar Habilidades',
       description: 'Realizar avaliação de habilidades e interesses',
       icon: '📊',
-      link: '/avaliacao',
+      link: '/avaliacoes',
       color: 'orange'
     }
   ];

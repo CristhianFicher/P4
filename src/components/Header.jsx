@@ -10,9 +10,9 @@ const Header = ({ user, onLogout, onLogin }) => {
   const menuItems = [
     { path: '/', label: 'Início', icon: '🏠' },
     { path: '/cadastroAlunos', label: 'Estudantes', icon: '🎓' },
-    { path: '/cadastroEmpresas', label: 'Empresas', icon: '🏢' },
-    { path: '/cadastroFuncionarios', label: 'Funcionários', icon: '👨‍💼' },
-    { path: '/avaliacao', label: 'Avaliações', icon: '📊' }
+    { path: '/avaliacoes', label: 'Avaliações', icon: '📊' },
+    { path: '/empresas', label: 'Empresas', icon: '🏢' },
+    { path: '/funcionarios', label: 'Funcionários', icon: '👨‍💼' }
   ];
 
   const isActivePath = (path) => {

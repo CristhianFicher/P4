@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFuncionarios } from '../context/FuncionariosContext';
 import './cadastroFuncionarios.css';
 
 export default function CadastroFuncionario() {
+  const { adicionarFuncionario } = useFuncionarios();
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     nome: '',
     cpf: '',
@@ -36,26 +40,22 @@ export default function CadastroFuncionario() {
     setSubmitStatus(null);
 
     try {
-      // Simulação de envio (substitua por sua lógica de API)
+      // Simulação de validação e processamento
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      setSubmitStatus('success');
-      // Reset form
-      setFormData({
-        nome: '',
-        cpf: '',
-        telefone: '',
-        email: '',
-        endereco: '',
-        dataNascimento: '',
-        dataAdmissao: '',
-        funcao: '',
-        departamento: '',
-        salario: '',
-        nivelEscolaridade: '',
-        experiencia: '',
-        observacoes: ''
+      // Adicionar funcionário ao contexto
+      adicionarFuncionario({
+        ...formData,
+        salario: parseFloat(formData.salario) || 0
       });
+      
+      setSubmitStatus('success');
+      
+      // Redirecionar para a lista após 2 segundos
+      setTimeout(() => {
+        navigate('/funcionarios');
+      }, 2000);
+      
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -67,8 +67,8 @@ export default function CadastroFuncionario() {
     <div className="cadastro-page">
       <div className="cadastro-container">
         <div className="cadastro-header">
-          <Link to="/" className="back-button">
-            Voltar ao Dashboard
+          <Link to="/funcionarios" className="back-button">
+            ← Voltar à Lista de Funcionários
           </Link>
           
           <div className="header-content">

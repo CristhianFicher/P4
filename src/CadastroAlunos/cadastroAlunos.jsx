@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEstudantes } from '../context/EstudantesContext';
 import './cadastroAlunos.css';
 
 export default function CadastroAlunos() {
+  const { adicionarEstudante } = useEstudantes();
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     nome: '',
     cpf: '',
@@ -38,28 +42,19 @@ export default function CadastroAlunos() {
     setSubmitStatus(null);
 
     try {
-      // Simulação de envio (substitua por sua lógica de API)
+      // Simulação de validação e processamento
       await new Promise(resolve => setTimeout(resolve, 1500));
       
+      // Adicionar estudante ao contexto
+      adicionarEstudante(formData);
+      
       setSubmitStatus('success');
-      // Reset form
-      setFormData({
-        nome: '',
-        cpf: '',
-        dataNascimento: '',
-        telefone: '',
-        email: '',
-        endereco: '',
-        nomeResponsavel: '',
-        telefoneResponsavel: '',
-        grauAutismo: '',
-        necessidadesEspeciais: '',
-        interesses: '',
-        habilidades: '',
-        objetivosEducacionais: '',
-        objetivosProfissionais: '',
-        observacoes: ''
-      });
+      
+      // Redirecionar para a lista após 2 segundos
+      setTimeout(() => {
+        navigate('/cadastroAlunos');
+      }, 2000);
+      
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -71,8 +66,8 @@ export default function CadastroAlunos() {
     <div className="cadastro-page">
       <div className="cadastro-container">
         <div className="cadastro-header">
-          <Link to="/" className="back-button">
-            Voltar ao Dashboard
+          <Link to="/cadastroAlunos" className="back-button">
+            ← Voltar à Lista de Estudantes
           </Link>
           
           <div className="header-content">
