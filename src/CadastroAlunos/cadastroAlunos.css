@@ -5,42 +5,43 @@
 .cadastro-page {
   min-height: 100vh;
   background: var(--background);
-  padding: 2rem 1rem;
+  padding: var(--space-xl) var(--space-md);
 }
 
 .cadastro-container {
   max-width: 1000px;
   margin: 0 auto;
   background: var(--card-bg);
-  border-radius: 24px;
+  border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  border: 2px solid rgba(30, 64, 175, 0.1);
+  border: 2px solid var(--border);
+  transition: var(--transition);
 }
 
 .cadastro-header {
   background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
-  padding: 2.5rem;
+  color: var(--text-inverse);
+  padding: var(--space-2xl);
   position: relative;
 }
 
 .back-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-sm);
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-weight: 500;
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  margin-bottom: var(--space-xl);
+  transition: var(--transition);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.1);
 }
 
 .back-button:hover {
-  color: white;
+  color: var(--text-inverse);
   background: rgba(255, 255, 255, 0.2);
   transform: translateX(-4px);
 }

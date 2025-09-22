@@ -3,11 +3,12 @@ html, body {
   padding: 0;
   height: auto;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--background);
   scroll-behavior: smooth;
   overflow-x: hidden;
-  color: #333;
+  color: var(--text);
+  transition: var(--transition);
 }
 
 #root {
@@ -18,124 +19,132 @@ html, body {
   padding: 0;
   display: block;
   text-align: left;
-  background-color: transparent;
+  background: transparent;
 }
 
 .avaliacao-body {
   width: 100%;
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: var(--space-xl) 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 .avaliacao-container {
-  background: #ffffff;
-  padding: 2.5rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: var(--card-bg);
+  padding: var(--space-2xl) var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   max-width: 800px;
   width: 100%;
+  border: 1px solid var(--border);
+  transition: var(--transition);
 }
 
 .avaliacao-title {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+  margin-bottom: var(--space-xl);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text);
 }
 
 .avaliacao-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-lg);
 }
 
 .avaliacao-label {
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  font-size: 0.95rem;
-  color: #444;
+  font-size: var(--font-size-sm);
+  color: var(--text);
 }
 
 .avaliacao-input,
 .avaliacao-label select,
 .avaliacao-label textarea {
-  margin-top: 0.5rem;
-  padding: 0.75rem;
-  font-size: 0.95rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  color: #333;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  font-size: var(--font-size-sm);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  transition: var(--transition);
+  color: var(--text);
 }
 
 .avaliacao-input:focus,
 .avaliacao-label select:focus,
 .avaliacao-label textarea:focus {
   outline: none;
-  border-color: #1976d2;
-  box-shadow: 0 0 4px rgba(25, 118, 210, 0.4);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--info-light);
 }
 
 .avaliacao-button {
-  margin-top: 2rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #1976d2;
-  color: white;
+  margin-top: var(--space-xl);
+  padding: var(--space-sm);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: var(--text-inverse);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .avaliacao-button:hover {
-  background-color: #1259a7;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .avaliacao-back {
   position: fixed;
-  top: 16px;
-  left: 16px;
-  background-color: #eee;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 4px;
+  top: var(--space-md);
+  left: var(--space-md);
+  background: var(--surface);
+  color: var(--text);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  z-index: 1000;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  z-index: var(--z-fixed);
+  border: 1px solid var(--border);
 }
 
 .avaliacao-back:hover {
-  background-color: #ddd;
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .avaliacao-info {
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-  border-left: 4px solid #1976d2;
+  background: var(--info-light);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
+  border-left: 4px solid var(--primary);
+  border: 1px solid var(--border);
 }
 
 .avaliacao-info p {
-  margin: 0.5rem 0;
-  color: #555;
+  margin: var(--space-sm) 0;
+  color: var(--text-light);
 }
 
 .avaliacao-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
 }
 
 .avaliacao-actions .avaliacao-button {
@@ -148,7 +157,52 @@ html, body {
 .avaliacao-input:disabled,
 .avaliacao-label select:disabled,
 .avaliacao-label textarea:disabled {
-  background-color: #f5f5f5;
-  color: #666;
+  background: var(--surface);
+  color: var(--text-muted);
   cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ==============================
+   Tema Escuro
+================================*/
+.dark-theme .avaliacao-container {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.dark-theme .avaliacao-input,
+.dark-theme .avaliacao-label select,
+.dark-theme .avaliacao-label textarea {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.dark-theme .avaliacao-input:focus,
+.dark-theme .avaliacao-label select:focus,
+.dark-theme .avaliacao-label textarea:focus {
+  background: var(--surface);
+}
+
+.dark-theme .avaliacao-back {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.dark-theme .avaliacao-back:hover {
+  background: var(--surface-hover);
+}
+
+.dark-theme .avaliacao-info {
+  background: var(--info-light);
+  border-color: var(--border);
+}
+
+.dark-theme .avaliacao-input:disabled,
+.dark-theme .avaliacao-label select:disabled,
+.dark-theme .avaliacao-label textarea:disabled {
+  background: var(--surface);
+  color: var(--text-muted);
 }
